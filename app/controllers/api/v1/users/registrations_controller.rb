@@ -15,7 +15,7 @@ module Api
           if resource.errors.present?
             invalid_resource(resource)
           else
-            render json: { signed_up: true }
+            render json: resource, serializer: UserSerializer
           end
         end
       end
