@@ -3,4 +3,19 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  scope 'api/v1' do
+    devise_for(
+      :users,
+      controllers: {
+        # confirmations: 'api/v1/users/confirmations',
+        sessions: 'api/v1/users/sessions',
+        # invitations: 'api/v1/users/invitations',
+        # omniauths: 'api/v1/users/omniauths',
+        passwords: 'api/v1/users/passwords',
+        registrations: 'api/v1/users/registrations'
+        # unlocks: 'api/v1/users/unlocks'
+      },
+      defaults: { format: :json }
+    )
+  end
 end

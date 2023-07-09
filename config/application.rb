@@ -23,5 +23,14 @@ module BlogApi
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use ActionDispatch::Session::CookieStore,
+                          key: :_backend_key,
+                          secure: Rails.env.production?,
+                          expire_after: 7.days,
+                          domain: :all,
+                          tld_length: 3,
+                          same_site: :none
+    config.action_dispatch.cookies_same_site_protection = :none
   end
 end

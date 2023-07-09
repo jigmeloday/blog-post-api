@@ -15,6 +15,7 @@
 /log/*
 /tmp/*
 !/log/.keep
+.idea
 !/tmp/.keep
 
 # Ignore pidfiles, but keep the directory.
