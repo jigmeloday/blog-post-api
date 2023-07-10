@@ -3,8 +3,22 @@ module Api
     class ArticlesController < ApplicationController
       skip_before_action :authenticate_user!, only: %i[index show]
 
+      # def index
+      #
+      # end
+
+      def show
+        article = Article.find(params[:id])
+        render json: article, serializer: ArticleSerializer
+      end
+
       def create
         article = ArticleService.new.create(create_params)
+        render json: article, serializer: ArticleSerializer
+      end
+
+      def destroy
+        article = Article.find(params[:id]).destroy!
         render json: article, serializer: ArticleSerializer
       end
 
@@ -17,6 +31,7 @@ module Api
           ]
         )
       end
+
     end
   end
 end
