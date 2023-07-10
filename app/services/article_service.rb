@@ -13,7 +13,7 @@ class ArticleService
 
   def update(id, params)
     article = Article.find(id)
-    article.update(params)
+    article.update!(params)
     article
   end
 end
