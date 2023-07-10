@@ -4,8 +4,7 @@ module Api
       skip_before_action :authenticate_user!, only: %i[index show]
 
       def index
-        article =  Article.all
-        render json: article, each_serializer: ArticleSerializer
+        render json: Article.all, each_serializer: ArticleSerializer
       end
 
       def show
