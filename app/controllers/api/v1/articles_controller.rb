@@ -5,7 +5,7 @@ module Api
 
       def index
         article =  Article.all
-        render json: article, serializer: ArticleSerializer
+        render json: article, each_serializer: ArticleSerializer
       end
 
       def show
@@ -23,6 +23,11 @@ module Api
         render json: article, serializer: ArticleSerializer
       end
 
+      def update
+        article = ArticleService.new.update(params[:id], update_params)
+        render json: article, serializer: ArticleSerializer
+      end
+
       private
 
       def create_params
@@ -33,6 +38,13 @@ module Api
         )
       end
 
+      def update_params
+        params.require(:article).permit(
+          [
+            :id, :title, :body, :user_id
+          ]
+        )
+      end
     end
   end
 end

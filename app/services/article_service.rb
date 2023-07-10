@@ -10,4 +10,10 @@ class ArticleService
   def destroy(id)
     Article.find(id).destroy!
   end
+
+  def update(id, params)
+    article = Article.find(id)
+    article.update(params)
+    article
+  end
 end
