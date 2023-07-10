@@ -7,7 +7,6 @@ module Api
             old_values = session.to_hash
             reset_session
             session.update old_values.except('_backend_key')
-            # render json: { signedIn: true }
           end
         end
 
@@ -15,7 +14,7 @@ module Api
           if resource.errors.present?
             invalid_resource(resource)
           else
-            render json: { success: true }
+            render json: resource, serializer: UserSerializer
           end
         end
 
