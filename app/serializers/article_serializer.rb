@@ -1,4 +1,4 @@
-class ArticleSerializer < ActiveModel:: Serializer
+class ArticleSerializer < ActiveModel::Serializer
   attributes(
     :id,
     :title,

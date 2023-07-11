@@ -12,10 +12,13 @@ AllCops:
 
 Style/Documentation:
   Description: 'Document classes and non-namespace modules.'
-  Enabled: true
+  Enabled: false
   VersionAdded: '0.9'
   Exclude:
     - ./*/
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
 
 Metrics/MethodLength:
   Description: 'Avoid methods longer than 10 lines of code.'
