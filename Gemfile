@@ -49,4 +49,5 @@ end
 
 gem 'active_model_serializers', '~> 0.10.13'
 gem 'devise', '~> 4.9', '>= 4.9.2'
+gem 'overcommit', '~> 0.60.0'
 gem 'pundit', '~> 2.3'
