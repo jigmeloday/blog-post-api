@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 def sign_in(user)
-  post user_session_url, params: { user: { login: user.email, password: user.password } }
+  post user_session_url, params: { user: { email: user.email, password: user.password } }
 end
 
 def sign_in_with_pwd(user, pwd)
-  post user_session_url, params: { user: { login: user.email, password: pwd } }
+  post user_session_url, params: { user: { email: user.email, password: pwd } }
 end
 
 def json
