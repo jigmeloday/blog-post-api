@@ -2,6 +2,7 @@
 
 require 'rails_helper'
 
+# rubocop: disable  Metrics/BlockLength
 describe 'Articles Requests' do
   let!(:user) { create(:user) }
 
@@ -65,3 +66,4 @@ describe 'Articles Requests' do
     end
   end
 end
+# rubocop: enable Metrics/BlockLength

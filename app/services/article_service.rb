@@ -1,5 +1,6 @@
 class ArticleService
-  def create(params)
+  def create(params, current_user)
+    params[:user_id] = current_user.id
     Article.create!(params)
   end
 

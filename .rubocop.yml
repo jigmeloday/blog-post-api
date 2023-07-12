@@ -1,0 +1,132 @@
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 3.0.3
+  Exclude:
+    - 'node_modules/*/'
+    - 'tmp/*/'
+    - 'vendor/*/'
+    - '.git/*/'
+    - 'bin/*/'
+    - 'config/puma.rb'
+    - 'db/schema.rb'
+
+Style/Documentation:
+  Description: 'Document classes and non-namespace modules.'
+  Enabled: false
+  VersionAdded: '0.9'
+  Exclude:
+    - ./*/
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Metrics/MethodLength:
+  Description: 'Avoid methods longer than 10 lines of code.'
+  StyleGuide: '#short-methods'
+  Enabled: true
+  VersionAdded: '0.25'
+  VersionChanged: '1.5'
+  CountComments: false  # count full line comments?
+  Max: 10
+  CountAsOne: []
+  AllowedMethods: ['activate_bundler', 'cli_arg_version', 'change', 'up', 'down']
+  Exclude:
+    - 'spec/swagger/*/'
+
+Metrics/PerceivedComplexity:
+  Description: >-
+    A complexity metric geared towards measuring complexity for a
+    human reader.
+  Enabled: true
+  VersionAdded: '0.25'
+  VersionChanged: '0.81'
+  AllowedMethods: ['cli_arg_version']
+  Max: 8
+
+# Avoid complex methods.
+Metrics/CyclomaticComplexity:
+  Description: >-
+    A complexity metric that is strongly correlated to the number
+    of test cases needed to validate a method.
+  Enabled: true
+  VersionAdded: '0.25'
+  VersionChanged: '0.81'
+  AllowedMethods: ['cli_arg_version']
+  Max: 7
+
+Style/PercentLiteralDelimiters:
+  Description: 'Use `%`-literal delimiters consistently.'
+  StyleGuide: '#percent-literal-braces'
+  Enabled: true
+  VersionAdded: '0.19'
+  # Specify the default preferred delimiter for all types with the 'default' key
+  # Override individual delimiters (even with default specified) by specifying
+  # an individual key
+  PreferredDelimiters:
+    default: ()
+    '%i': '[]'
+    '%I': '[]'
+    '%r': '[]'
+    '%w': '[]'
+    '%W': '[]'
+  VersionChanged: '0.48'
+
+Metrics/ClassLength:
+  Exclude:
+    - 'spec/swagger/*/'
+
+Metrics/BlockLength:
+  Description: 'Avoid long blocks with many lines.'
+  Enabled: true
+  VersionAdded: '0.44'
+  VersionChanged: '1.5'
+  CountComments: false  # count full line comments?
+  Max: 25
+  CountAsOne: []
+  AllowedMethods:
+    # By default, exclude the `#refine` method, as it tends to have larger
+    # associated blocks.
+    - refine
+  Exclude:
+    - '*/.gemspec'
+    - 'db/schema.rb'
+    - 'lib//'
+    - 'spec//.rb'
+    - 'config/*'
+    - 'config//'
+    - 'spec/*/'
+    - 'spec/swagger_helper.rb'
+    - 'spec/swagger/*/'
+
+Metrics/AbcSize:
+  Enabled: true
+  Exclude:
+    - 'db/migrate/*'
+    - 'bin/*'
+    - 'spec/swagger/api_schemas/errors/errors.rb'
+
+Layout/LineLength:
+  Description: 'Checks that line length does not exceed the configured limit.'
+  StyleGuide: '#max-line-length'
+  Enabled: true
+  VersionAdded: '0.25'
+  VersionChanged: '1.4'
+  AutoCorrect: true
+  Max: 120
+  # To make it possible to copy or click on URIs in the code, we allow lines
+  # containing a URI to be longer than Max.
+  AllowHeredoc: true
+  AllowURI: true
+  URISchemes:
+    - http
+    - https
+  # The IgnoreCopDirectives option causes the LineLength rule to ignore cop
+  # directives like '# rubocop: enable ...' when calculating a line's length.
+  IgnoreCopDirectives: true
+  # The IgnoredPatterns option is a list of !ruby/regexp and/or string
+  # elements. Strings will be converted to Regexp objects. A line that matches
+  # any regular expression listed in this option will be ignored by LineLength.
+  AllowedPatterns: ['!db/migrate/', '!config/']
+  Exclude:
+    - 'spec/*/'
+    - 'spec/swagger_helper.rb'
