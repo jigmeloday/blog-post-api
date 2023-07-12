@@ -11,7 +11,7 @@ module Api
 
       def show
         article = ArticleService.new.show(params[:id])
-        render json: article, serializer: ArticleSerializer
+        render json: article, serializer: ArticleSerializer, current_user: current_user
       end
 
       def create
