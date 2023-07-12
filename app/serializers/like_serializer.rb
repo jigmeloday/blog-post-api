@@ -1,6 +1,7 @@
 class LikeSerializer < ActiveModel::Serializer
-  attribute(
+  attributes(
     :user_id,
-    :likable_id
+    :likable_id,
+    :likable_type
   )
 end
