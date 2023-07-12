@@ -11,7 +11,6 @@ module Api
       private
 
       def create_params
-        binding.pry
         params.require(:like).permit(%i[user_id likable_type likable_id])
       end
     end
