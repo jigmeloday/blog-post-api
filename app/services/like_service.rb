@@ -1,5 +1,6 @@
 class LikeService
-  def create(params)
+  def create(params, user)
+    params[:user_id] = user.id
     Like.create!(params)
   end
 

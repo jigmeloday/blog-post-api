@@ -15,7 +15,7 @@ module Api
       end
 
       def create
-        article = ArticleService.new.create(create_params)
+        article = ArticleService.new.create(create_params, current_user)
         render json: article, serializer: ArticleSerializer
       end
 
@@ -34,7 +34,7 @@ module Api
       def create_params
         params.require(:article).permit(
           %i[
-            title body user_id
+            title body
           ]
         )
       end
