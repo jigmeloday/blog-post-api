@@ -8,6 +8,11 @@ module Api
         render json: like, serializer: LikeSerializer
       end
 
+      def destroy
+        like = LikeService.new.destroy(params[:id])
+        render json: like, serializer: LikeSerializer
+      end
+
       private
 
       def create_params
