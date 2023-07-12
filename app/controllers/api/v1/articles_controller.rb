@@ -42,7 +42,7 @@ module Api
       def update_params
         params.require(:article).permit(
           %i[
-            id title body user_id
+            id title body
           ]
         )
       end
