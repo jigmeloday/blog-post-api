@@ -8,6 +8,8 @@ module Api
         render json: like, serializer: LikeSerializer
       end
 
+      def like_by; end
+
       private
 
       def create_params
