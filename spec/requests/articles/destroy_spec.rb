@@ -30,7 +30,7 @@ describe 'Articles Requests' do
 
   context 'Failure (Without Signing in)' do
 
-    it 'creates an article' do
+    it 'delete an article' do
       expect(Article.count).to eq(1)
       delete api_v1_article_path(article)
       expect(status).to eq(401)
