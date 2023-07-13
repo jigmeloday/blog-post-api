@@ -14,6 +14,7 @@ describe 'Articles Requests' do
       get api_v1_articles_path
       expect(status).to eq(200)
       expect(Article.count).to eq(1)
+      expect(Article.count).to eq(1)
     end
 
     it 'show an article without user' do
