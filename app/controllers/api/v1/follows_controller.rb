@@ -6,6 +6,11 @@ module Api
         render json: { message: true }
       end
 
+      def destroy
+        FollowService.new.destroy(params[:id], current_user)
+        render json: { message: true }
+      end
+
       private
 
       def follow_params
