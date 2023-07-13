@@ -8,11 +8,13 @@ describe 'Articles Requests' do
   let!(:article) { create(:article, user: user) }
 
   context 'Success' do
+    let!(:like) { create(:like, likable: article, user: user) }
     it 'delete an article' do
       sign_in(user)
       expect(Article.count).to eq(1)
       delete api_v1_article_path(article)
       expect(status).to eq(200)
+      expect(Like.count).to eq(0)
       expect(Article.count).to eq(0)
     end
   end
