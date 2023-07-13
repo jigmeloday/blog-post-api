@@ -8,7 +8,7 @@ describe 'Articles Requests' do
 
   context 'Success' do
 
-    it 'show an article with user' do
+    it 'show article with user' do
       sign_in(user)
       expect(Article.count).to eq(1)
       get api_v1_article_path(article.id)
@@ -16,7 +16,7 @@ describe 'Articles Requests' do
       expect(Article.count).to eq(1)
     end
 
-    it 'show an article without user' do
+    it 'shows articles without user' do
       expect(Article.count).to eq(1)
       get api_v1_article_path(article.id)
       expect(status).to eq(200)

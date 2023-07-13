@@ -14,7 +14,8 @@ describe 'Articles Requests' do
       get api_v1_articles_path
       expect(status).to eq(200)
       expect(Article.count).to eq(1)
-      expect(Article.count).to eq(1)
+      response_body = JSON.parse(response.body)
+      expect(response_body).to be_an(Array)
     end
 
     it 'show an article without user' do
