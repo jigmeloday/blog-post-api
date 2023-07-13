@@ -1,20 +1,25 @@
-class ArticleService
-  def create(params, current_user)
+class ArticleService < BaseService
+  def create
     params[:user_id] = current_user.id
     Article.create!(params)
   end
 
-  def show(id)
-    Article.find(id)
+  def show
+    article
   end
 
-  def destroy(id)
-    Article.find(id).destroy!
+  def destroy
+    article.destroy!
   end
 
-  def update(id, params)
-    article = Article.find(id)
+  def update
     article.update!(params)
     article
+  end
+
+  private
+
+  def article
+    @article ||= Article.find(id)
   end
 end

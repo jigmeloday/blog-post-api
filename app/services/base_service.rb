@@ -1,8 +1,9 @@
 class BaseService
-  attr_accessor :params, :current_user
+  attr_accessor :params, :current_user, :id
 
-  def initialize(params, current_user)
+  def initialize(current_user, params = {}, id = nil)
     @params = params
     @current_user = current_user
+    @id = id
   end
 end
