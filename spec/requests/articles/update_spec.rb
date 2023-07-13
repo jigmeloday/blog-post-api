@@ -18,7 +18,7 @@ describe 'Articles Requests' do
       }
     end
 
-    it 'creates an article' do
+    it 'update an article' do
       sign_in(user)
       expect(Article.count).to eq(1)
       put api_v1_article_path(article), params: params
@@ -39,7 +39,7 @@ describe 'Articles Requests' do
       }
     end
 
-    it 'creates an article' do
+    it 'update an article' do
       sign_in(user)
       expect(Article.count).to eq(1)
       put api_v1_article_path(article), params: params
@@ -59,7 +59,7 @@ describe 'Articles Requests' do
       }
     end
 
-    it 'creates an article' do
+    it 'update an article' do
       expect(Article.count).to eq(1)
       put api_v1_article_path(article), params: params
       expect(status).to eq(401)
