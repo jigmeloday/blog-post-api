@@ -7,7 +7,6 @@ describe 'Articles Requests' do
   let!(:article) { create(:article, user: user) }
 
   context 'Success' do
-
     it 'show article with user' do
       sign_in(user)
       expect(Article.count).to eq(1)

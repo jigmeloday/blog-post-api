@@ -18,7 +18,6 @@ describe 'Articles Requests' do
   end
 
   context 'Failure (With Validation Errors)' do
-
     it 'delete an article' do
       sign_in(user)
       expect(Article.count).to eq(1)
@@ -29,7 +28,6 @@ describe 'Articles Requests' do
   end
 
   context 'Failure (Without Signing in)' do
-
     it 'delete an article' do
       expect(Article.count).to eq(1)
       delete api_v1_article_path(article)
