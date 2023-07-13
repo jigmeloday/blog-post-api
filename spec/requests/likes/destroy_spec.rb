@@ -18,7 +18,7 @@ describe 'Like' do
       }
     end
 
-    it 'creates a like' do
+    it 'delete a like' do
       sign_in(user)
       expect(Like.count).to eq(1)
       delete api_v1_like_path(article.id), params: params
@@ -37,7 +37,7 @@ describe 'Like' do
       }
     end
 
-    it 'creates a like' do
+    it 'delete a like' do
       sign_in(user)
       expect(Like.count).to eq(1)
       delete api_v1_like_path(7), params: params
@@ -57,7 +57,7 @@ describe 'Like' do
       }
     end
 
-    it 'creates a like' do
+    it 'delete a like' do
       expect(Like.count).to eq(1)
       delete api_v1_like_path(article.id), params: params
       expect(status).to eq(401)
