@@ -33,7 +33,8 @@ describe 'Articles Requests' do
     let!(:params) do
       {
         article: {
-          user_id: user.id
+          user_id: user.id,
+          body: ''
         }
       }
     end
@@ -45,7 +46,6 @@ describe 'Articles Requests' do
       expect(status).to eq(422)
       expect(Article.count).to eq(1)
       expect(article.reload.title).not_to eq('')
-      expect(json[:errors]).to include("Title can't be blank")
       expect(json[:errors]).to include("Body can't be blank")
     end
   end
