@@ -1,11 +1,11 @@
-class FollowService
-  def create(params, user)
-    params[:user_id] = user.id
+class FollowService < BaseService
+  def create
+    params[:user_id] = current_user.id
     Follow.create!(params)
   end
 
-  def destroy(id, user)
-    follow = Follow.find_by!(followed_user_id: id, user_id: user.id)
+  def destroy
+    follow = Follow.find_by!(followed_user_id: params[:id], user_id: current_user.id)
     follow.destroy!
   end
 end
