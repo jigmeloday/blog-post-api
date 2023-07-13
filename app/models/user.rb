@@ -4,6 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :articles
+  has_many :followings, foreign_key: :followed_user_id, class_name: 'Follow', inverse_of: :followed_user,
+                        dependent: :destroy
+  has_many :follows, dependent: :destroy
   has_many :likes, dependent: :destroy
 
   enum gender: { male: 0, female: 1, other: 2 }
