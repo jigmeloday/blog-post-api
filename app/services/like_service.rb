@@ -6,6 +6,6 @@ class LikeService
 
   def destroy(id, params, current_user)
     like = Like.find_by!(likable_id: id, user_id: current_user.id, likable_type: params[:likable_type])
-    Like.destroy(like.id)
+    like.destroy!
   end
 end
