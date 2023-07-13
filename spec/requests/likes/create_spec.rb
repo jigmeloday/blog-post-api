@@ -23,6 +23,8 @@ describe 'Like' do
       post api_v1_likes_path, params: params
       expect(status).to eq(200)
       expect(Like.count).to eq(1)
+      article.reload
+      expect(article.like_count).to eq(1)
       expect(Like.first.likable).to eq(Article.first)
     end
   end
@@ -44,6 +46,27 @@ describe 'Like' do
       expect(status).to eq(422)
       expect(Like.count).to eq(0)
       expect(json[:errors]).to include('Likable must exist')
+    end
+  end
+
+  context 'Failure (With liking same post)' do
+    let!(:like) { create(:like, likable: article, user: user) }
+    let!(:params) do
+      {
+        like: {
+          likable_id: article.id,
+          likable_type: 'Article'
+        }
+      }
+    end
+
+    it 'creates a like' do
+      sign_in(user)
+      expect(Like.count).to eq(1)
+      post api_v1_likes_path, params: params
+      expect(status).to eq(422)
+      expect(Like.count).to eq(1)
+      expect(json[:errors]).to include('User has already liked it!')
     end
   end
 
