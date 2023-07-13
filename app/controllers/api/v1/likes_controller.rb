@@ -4,12 +4,12 @@ module Api
   module V1
     class LikesController < ApplicationController
       def create
-        like = LikeService.new.create(create_params, current_user)
+        like = LikeService.new(current_user, create_params).create
         render json: like, serializer: LikeSerializer
       end
 
       def destroy
-        like = LikeService.new.destroy(params[:id], destroy_params, current_user)
+        like = LikeService.new(current_user, destroy_params, params[:id]).destroy
         render json: like, serializer: LikeSerializer
       end
 

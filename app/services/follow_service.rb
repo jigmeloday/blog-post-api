@@ -1,7 +1,6 @@
 class FollowService < BaseService
   def create
-    params[:user_id] = current_user.id
-    Follow.create!(params)
+    Follow.create!(params.merge!(user_id: current_user.id))
   end
 
   def destroy
