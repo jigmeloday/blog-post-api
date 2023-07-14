@@ -50,7 +50,7 @@ describe 'Articles Requests' do
     end
   end
 
-  context 'Failure (With different user)' do
+  context 'Failure (With Forbidden)' do
     let!(:user1) { create(:user) }
     let!(:params) do
       {

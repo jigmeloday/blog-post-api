@@ -30,7 +30,7 @@ describe 'Articles Requests' do
     end
   end
 
-  context 'Failure (With Validation Errors)' do
+  context 'Failure (With Forbidden)' do
     let!(:user1) { create(:user) }
     it 'delete an article by other user' do
       sign_in(user1)
