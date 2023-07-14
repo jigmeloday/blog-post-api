@@ -20,6 +20,7 @@ module Api
       end
 
       def destroy
+        authorize(article, policy_class: ArticlePolicy)
         article = ArticleService.new(current_user, {}, id).destroy
         render json: article, serializer: ArticleSerializer
       end
@@ -33,6 +34,10 @@ module Api
 
       def id
         @id ||= params[:id]
+      end
+
+      def article
+        @article ||= Article.find(id)
       end
 
       def create_params
