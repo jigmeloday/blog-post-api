@@ -49,6 +49,32 @@ describe 'Follow' do
     end
   end
 
+  # context  do
+  #   it 'is invalid if a user tries to follow themselves' do
+  #     self_follow = Follow.new(user: user, followed_user: user)
+  #     expect(self_follow).not_to be_valid
+  #     expect(self_follow.errors[:user_id]).to include('cannot follow themselves')
+  #   end
+  # end
+
+  context 'Failure (With invalid params)' do
+    let!(:params) do
+      {
+        follow: {
+          user: user.id
+        }
+      }
+    end
+
+    it 'follow user without followed_id' do
+      expect(Follow.count).to eq(0)
+      post api_v1_articles_path, params: params
+      expect(status).to eq(401)
+      expect(Follow.count).to eq(0)
+      expect(json[:error]).to eq('You need to sign in or sign up before continuing.')
+    end
+  end
+
   context 'Failure (Without Signing in)' do
     let!(:params) do
       {
