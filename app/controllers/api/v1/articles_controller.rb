@@ -26,6 +26,7 @@ module Api
       end
 
       def update
+        authorize(article, policy_class: ArticlePolicy)
         article = ArticleService.new(current_user, update_params, id).update
         render json: article, serializer: ArticleSerializer
       end
