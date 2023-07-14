@@ -10,25 +10,25 @@ module Api
       end
 
       def show
-        article = ArticleService.new(current_user, {}, id).show
-        render json: article, serializer: ArticleSerializer, current_user: current_user
+        article_ser = ArticleService.new(current_user, {}, article).show
+        render json: article_ser, serializer: ArticleSerializer, current_user: current_user
       end
 
       def create
-        article = ArticleService.new(current_user, create_params).create
-        render json: article, serializer: ArticleSerializer
+        article_ser = ArticleService.new(current_user, create_params).create
+        render json: article_ser, serializer: ArticleSerializer
       end
 
       def destroy
-        authorize(article, policy_class: ArticlePolicy)
-        article = ArticleService.new(current_user, {}, id).destroy
-        render json: article, serializer: ArticleSerializer
+        authorize article
+        article_ser = ArticleService.new(current_user, {}, article).destroy
+        render json: article_ser, serializer: ArticleSerializer
       end
 
       def update
-        authorize(article, policy_class: ArticlePolicy)
-        article = ArticleService.new(current_user, update_params, id).update
-        render json: article, serializer: ArticleSerializer
+        authorize article
+        article_ser = ArticleService.new(current_user, update_params, article).update
+        render json: article_ser, serializer: ArticleSerializer
       end
 
       private

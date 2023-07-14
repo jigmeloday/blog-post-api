@@ -1,10 +1,10 @@
 class BaseService
   # include Pundit::Authorization
-  attr_accessor :params, :current_user, :id
+  attr_accessor :params, :current_user, :record
 
-  def initialize(current_user, params = {}, id = nil)
+  def initialize(current_user, params = {}, record = {})
     @params = params
     @current_user = current_user
-    @id = id
+    @record = record
   end
 end

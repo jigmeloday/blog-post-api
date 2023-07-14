@@ -5,21 +5,21 @@ class ArticleService < BaseService
   end
 
   def show
-    article
+    record
   end
 
   def destroy
-    article.destroy!
+    record.destroy!
   end
 
   def update
-    article.update!(params)
-    article
+    record.update!(params)
+    record
   end
 
-  private
+  # private
 
-  def article
-    @article ||= Article.find(id)
-  end
+  # def article
+  #   @article ||= Article.find(id)
+  # end
 end
