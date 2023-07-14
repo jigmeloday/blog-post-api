@@ -2,12 +2,12 @@ module Api
   module V1
     class FollowsController < ApplicationController
       def create
-        FollowService.new.create(follow_params, current_user)
+        FollowService.new(current_user, follow_params).create
         render json: { message: true }
       end
 
       def destroy
-        FollowService.new.destroy(params[:id], current_user)
+        FollowService.new(current_user, params).destroy
         render json: { message: true }
       end
 

@@ -1,10 +1,9 @@
-class LikeService
-  def create(params, user)
-    params[:user_id] = user.id
-    Like.create!(params)
+class LikeService < BaseService
+  def create
+    Like.create!(params.merge!(user_id: current_user.id))
   end
 
-  def destroy(id, params, current_user)
+  def destroy
     like = Like.find_by!(likable_id: id, user_id: current_user.id, likable_type: params[:likable_type])
     like.destroy!
   end
