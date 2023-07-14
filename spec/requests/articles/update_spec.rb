@@ -66,7 +66,6 @@ describe 'Articles Requests' do
       put api_v1_article_path(article), params: params
       expect(status).to eq(403)
       expect(Article.count).to eq(1)
-      # expect(json[:error]).to eq('You need to sign in or sign up before continuing.')
     end
   end
 
