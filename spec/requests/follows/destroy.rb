@@ -87,26 +87,23 @@ describe 'Unfollow' do
     end
   end
 
-  # context 'Failure (Self Unfollow)'  do
-  #   let!(:follow) { create(:follow, followed_user: user1, user: user) }
-  #
-  #   let!(:params) do
-  #     {
-  #       follow: {
-  #         followed_user_id: user1.id,
-  #         user: user1.id
-  #       }
-  #     }
-  #   end
-  #   it 'is invalid if a user tries to unfollow themselves' do
-  #     # self_follow = Follow.new(user: user, followed_user: user)
-  #     # expect(self_follow).not_to be_valid
-  #     # expect(self_follow.errors[:user_id]).to include('cannot follow themselves')
-  #     sign_in(user)
-  #     expect(Follow.count).to eq(1)
-  #     delete api_v1_follow_path(user1.id), params: params
-  #     binding.pry
-  #   end
-  # end
+  context 'Failure (Self Unfollow)' do
+    let!(:follow) { create(:follow, followed_user: user1, user: user) }
+
+    let!(:params) do
+      {
+        follow: {
+          followed_user_id: user1.id,
+          user: user1.id
+        }
+      }
+    end
+    it 'is invalid if a user tries to unfollow themselves' do
+      sign_in(user1)
+      expect(Follow.count).to eq(1)
+      delete api_v1_follow_path(user1.id), params: params
+      expect(Follow.count).to eq(1)
+    end
+  end
 end
 # rubocop: enable Metrics/BlockLength
