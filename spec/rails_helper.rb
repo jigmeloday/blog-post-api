@@ -25,6 +25,8 @@ require 'simplecov'
 SimpleCov.start do
   add_filter %r[^/spec/]
   add_filter 'app/serializers/application_serializer.rb'
+  add_filter 'app/helpers/api_errors/error_handler.rb'
+  add_filter 'app/policies/application_policy.rb'
 end
 Dir[Rails.root.join('spec', 'supports', '**', '*.rb')].each(&method(:require))
 # Checks for pending migrations and applies them before tests are run.
