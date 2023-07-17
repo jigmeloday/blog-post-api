@@ -10,35 +10,29 @@ module Api
       end
 
       def show
-        article_ser = ArticleService.new(current_user, {}, article).show
-        render json: article_ser, serializer: ArticleSerializer, current_user: current_user
+        article = ArticleService.new(current_user, {}, id).show
+        render json: article, serializer: ArticleSerializer, current_user: current_user
       end
 
       def create
-        article_ser = ArticleService.new(current_user, create_params).create
-        render json: article_ser, serializer: ArticleSerializer
+        article = ArticleService.new(current_user, create_params).create
+        render json: article, serializer: ArticleSerializer
       end
 
       def destroy
-        authorize article
-        article_ser = ArticleService.new(current_user, {}, article).destroy
-        render json: article_ser, serializer: ArticleSerializer
+        article = ArticleService.new(current_user, {}, id).destroy
+        render json: article, serializer: ArticleSerializer
       end
 
       def update
-        authorize article
-        article_ser = ArticleService.new(current_user, update_params, article).update
-        render json: article_ser, serializer: ArticleSerializer
+        article = ArticleService.new(current_user, update_params, id).update
+        render json: article, serializer: ArticleSerializer
       end
 
       private
 
       def id
         @id ||= params[:id]
-      end
-
-      def article
-        @article ||= Article.find(id)
       end
 
       def create_params

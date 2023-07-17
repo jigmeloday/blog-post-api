@@ -17,6 +17,7 @@
 !/log/.keep
 .idea
 !/tmp/.keep
+.DS_Store
 
 # Ignore pidfiles, but keep the directory.
 /tmp/pids/*
