@@ -9,7 +9,6 @@ describe 'Unfollow' do
 
   context 'Success' do
     let!(:follow) { create(:follow, followed_user: user1, user: user) }
-
     let!(:params) do
       {
         follow: {

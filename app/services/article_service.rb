@@ -1,7 +1,6 @@
 class ArticleService < BaseService
   def create
-    params[:user_id] = current_user.id
-    Article.create!(params)
+    Article.create!(params.merge!(user_id: current_user.id))
   end
 
   def show
@@ -9,10 +8,12 @@ class ArticleService < BaseService
   end
 
   def destroy
+    authorize article, :destroy?
     article.destroy!
   end
 
   def update
+    authorize article, :update?
     article.update!(params)
     article
   end

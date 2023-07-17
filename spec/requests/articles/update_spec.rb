@@ -50,6 +50,25 @@ describe 'Articles Requests' do
     end
   end
 
+  context 'Failure (With Forbidden)' do
+    let!(:user1) { create(:user) }
+    let!(:params) do
+      {
+        article: {
+          user_id: user.id
+        }
+      }
+    end
+
+    it 'update an article by different user' do
+      sign_in(user1)
+      expect(Article.count).to eq(1)
+      put api_v1_article_path(article), params: params
+      expect(status).to eq(403)
+      expect(Article.count).to eq(1)
+    end
+  end
+
   context 'Failure (Without Signing in)' do
     let!(:params) do
       {
