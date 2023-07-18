@@ -2,12 +2,12 @@ module Api
   module V1
     class CommentsController < ApplicationController
       def create
-        comment = CommentService.new(current_user, create_params).create
+        comment = CommentService.new(current_user, comment_params).create
         render json: comment, serializer: CommentSerializer
       end
 
       def update
-        comment = CommentService.new(current_user, create_params, params[:id]).update
+        comment = CommentService.new(current_user, comment_params, params[:id]).update
         render json: comment, serializer: CommentSerializer
       end
 
@@ -18,7 +18,7 @@ module Api
 
       private
 
-      def create_params
+      def comment_params
         params.require(:comment).permit(%i[body commentable_type commentable_id])
       end
     end

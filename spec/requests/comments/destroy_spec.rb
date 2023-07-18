@@ -27,8 +27,7 @@ describe 'Comment' do
         comment: {
           commentable_id: article.id,
           commentable_type: 'Article',
-          body: 'Updated body',
-          user_id: user.id
+          body: 'Updated body'
         }
       }
     end
