@@ -10,6 +10,7 @@ class CommentService < BaseService
   end
 
   def destroy
+    authorize comment, :destroy?
     Comment.destroy(id)
   end
 
