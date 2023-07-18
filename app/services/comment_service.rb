@@ -4,12 +4,18 @@ class CommentService < BaseService
   end
 
   def update
-    comment = Comment.find(id)
+    authorize comment, :update?
     comment.update!(params)
     comment
   end
 
   def destroy
     Comment.destroy(id)
+  end
+
+  private
+
+  def comment
+    Comment.find(id)
   end
 end
