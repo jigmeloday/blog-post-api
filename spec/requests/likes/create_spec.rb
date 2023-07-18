@@ -6,6 +6,7 @@ require 'rails_helper'
 describe 'Like' do
   let!(:user) { create(:user) }
   let!(:article) { create(:article, user: user) }
+  let!(:comment) { create(:comment, user: user, commentable: article) }
 
   context 'Success' do
     let!(:params) do
@@ -26,6 +27,28 @@ describe 'Like' do
       article.reload
       expect(article.like_count).to eq(1)
       expect(Like.first.likable).to eq(Article.first)
+    end
+  end
+
+  context 'Success' do
+    let!(:params) do
+      {
+        like: {
+          likable_id: comment.id,
+          likable_type: 'Comment'
+        }
+      }
+    end
+
+    it 'creates a like' do
+      sign_in(user)
+      expect(Like.count).to eq(0)
+      post api_v1_likes_path, params: params
+      expect(status).to eq(200)
+      expect(Like.count).to eq(1)
+      comment.reload
+      expect(comment.like_count).to eq(1)
+      expect(Like.first.likable).to eq(Comment.first)
     end
   end
 
