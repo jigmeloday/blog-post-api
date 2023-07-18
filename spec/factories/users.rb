@@ -10,6 +10,11 @@ FactoryBot.define do
     following_count { 0 }
     follower_count { 0 }
     gender { :male }
+    confirmed_at { nil }
+
+    trait :confirmed do
+      confirmed_at { DateTime.now }
+    end
 
     trait :male do
       gender { :male }

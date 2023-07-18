@@ -12,7 +12,8 @@ Rails.application.routes.draw do
         # invitations: 'api/v1/users/invitations',
         # omniauths: 'api/v1/users/omniauths',
         passwords: 'api/v1/users/passwords',
-        registrations: 'api/v1/users/registrations'
+        registrations: 'api/v1/users/registrations',
+        confirmations: 'api/v1/users/confirmations'
         # unlocks: 'api/v1/users/unlocks'
       },
       defaults: { format: :json }

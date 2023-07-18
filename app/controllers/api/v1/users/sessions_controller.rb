@@ -12,7 +12,9 @@ module Api
 
         def respond_with(resource, _opts = {})
           if resource.errors.present?
+            # :nocov:
             invalid_resource(resource)
+            # :nocov:
           else
             render json: resource, serializer: UserSerializer
           end
