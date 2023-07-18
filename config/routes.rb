@@ -23,8 +23,9 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :articles
-      resources :likes
-      resources :follows
+      resources :likes, only: %i[create destroy]
+      resources :follows, only: %i[create destroy]
+      resources :comments, except: %i[show index]
     end
   end
 end
