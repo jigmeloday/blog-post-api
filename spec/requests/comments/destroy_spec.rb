@@ -24,8 +24,8 @@ describe 'Comment' do
     it 'destroy comment with wrong id' do
       sign_in(user)
       expect(Comment.count).to eq(1)
-      post api_v1_comments_path(0)
-      expect(status).to eq(400)
+      delete api_v1_comment_path(0)
+      expect(status).to eq(404)
       expect(Comment.count).to eq(1)
       article.reload
       expect(article.comment_count).to eq(1)

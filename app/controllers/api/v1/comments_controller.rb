@@ -6,6 +6,11 @@ module Api
         render json: comment, serializer: CommentSerializer
       end
 
+      def update
+        comment = CommentService.new(current_user, create_params, params[:id]).update
+        render json: comment, serializer: CommentSerializer
+      end
+
       def destroy
         comment = CommentService.new(current_user, {}, params[:id]).destroy
         render json: comment, serializer: CommentSerializer
