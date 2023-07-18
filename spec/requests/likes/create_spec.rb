@@ -8,7 +8,7 @@ describe 'Like' do
   let!(:article) { create(:article, user: user) }
   let!(:comment) { create(:comment, user: user, commentable: article) }
 
-  context 'Success' do
+  context 'Success On Article Liked' do
     let!(:params) do
       {
         like: {
@@ -30,7 +30,7 @@ describe 'Like' do
     end
   end
 
-  context 'Success' do
+  context 'Success on Comment Liked' do
     let!(:params) do
       {
         like: {
