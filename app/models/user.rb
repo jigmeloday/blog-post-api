@@ -8,7 +8,7 @@ class User < ApplicationRecord
                         dependent: :destroy
   has_many :follows, dependent: :destroy
   has_many :likes, dependent: :destroy
-  has_many :comments
+  has_many :comments, dependent: :destroy
 
   enum gender: { male: 0, female: 1, other: 2 }
 end

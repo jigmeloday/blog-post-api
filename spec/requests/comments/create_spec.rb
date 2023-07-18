@@ -13,8 +13,7 @@ describe 'Comment' do
         comment: {
           commentable_id: article.id,
           commentable_type: 'Article',
-          body: 'hello world',
-          user_id: user.id
+          body: 'hello world'
         }
       }
     end
@@ -35,8 +34,7 @@ describe 'Comment' do
       {
         comment: {
           commentable_id: article.id,
-          commentable_type: 'Article',
-          user_id: user.id
+          commentable_type: 'Article'
         }
       }
     end
@@ -58,8 +56,7 @@ describe 'Comment' do
         comment: {
           commentable_id: article.id,
           commentable_type: 'Article',
-          body: 'Hello',
-          user_id: user.id
+          body: 'Hello'
         }
       }
     end

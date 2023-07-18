@@ -11,12 +11,12 @@ class CommentService < BaseService
 
   def destroy
     authorize comment, :destroy?
-    Comment.destroy(id)
+    comment.destroy!
   end
 
   private
 
   def comment
-    Comment.find(id)
+    @comment ||= Comment.find(id)
   end
 end
