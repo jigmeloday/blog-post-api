@@ -14,6 +14,10 @@ module ApiErrors
       end
     end
 
+    def confirmation_error(error)
+      render_error(:unprocessable_entity, error.full_messages)
+    end
+
     def record_not_found(error)
       render_error(:not_found, [error.message])
     end
