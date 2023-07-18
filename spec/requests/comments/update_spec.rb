@@ -14,8 +14,7 @@ describe 'Comment' do
         comment: {
           commentable_id: article.id,
           commentable_type: 'Article',
-          body: 'Updated body',
-          user_id: user.id
+          body: 'Updated body'
         }
       }
     end
@@ -37,8 +36,7 @@ describe 'Comment' do
         comment: {
           commentable_id: article.id,
           commentable_type: 'Article',
-          body: 'Updated body',
-          user_id: user.id
+          body: 'Updated body'
         }
       }
     end
@@ -53,26 +51,26 @@ describe 'Comment' do
     end
   end
 
-  # context 'Failure (With Empty Body)' do
-  #   let!(:params) do
-  #     {
-  #       comment: {
-  #         commentable_id: article.id,
-  #         commentable_type: 'Article',
-  #         user_id: user.id
-  #       }
-  #     }
-  #   end
-  #   it 'update comment without body' do
-  #     sign_in(user)
-  #     expect(Comment.count).to eq(1)
-  #     put api_v1_comment_path(comment.id), params: params
-  #     expect(status).to eq(422)
-  #     expect(Comment.count).to eq(1)
-  #     article.reload
-  #     expect(article.comment_count).to eq(1)
-  #   end
-  # end
+  context 'Failure (With Empty Body)' do
+    let!(:params) do
+      {
+        comment: {
+          commentable_id: article.id,
+          commentable_type: 'Article',
+          body: ''
+        }
+      }
+    end
+    it 'update comment without body' do
+      sign_in(user)
+      expect(Comment.count).to eq(1)
+      put api_v1_comment_path(comment.id), params: params
+      expect(status).to eq(422)
+      expect(Comment.count).to eq(1)
+      article.reload
+      expect(article.comment_count).to eq(1)
+    end
+  end
 
   context 'Failure (With Diff User)' do
     let!(:user1) { create(:user) }
@@ -81,8 +79,7 @@ describe 'Comment' do
         comment: {
           commentable_id: article.id,
           commentable_type: 'Article',
-          body: 'Updated body',
-          user_id: user.id
+          body: 'Updated body'
         }
       }
     end
@@ -103,8 +100,7 @@ describe 'Comment' do
         comment: {
           commentable_id: article.id,
           commentable_type: 'Article',
-          body: 'Updated body',
-          user_id: user.id
+          body: 'Updated body'
         }
       }
     end
