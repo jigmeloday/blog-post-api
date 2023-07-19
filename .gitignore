@@ -18,6 +18,7 @@
 .idea
 !/tmp/.keep
 .DS_Store
+.env
 
 # Ignore pidfiles, but keep the directory.
 /tmp/pids/*
