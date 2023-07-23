@@ -4,7 +4,7 @@ require 'rails_helper'
 
 # rubocop: disable  Metrics/BlockLength
 describe 'Articles Requests' do
-  let!(:user) { create(:user) }
+  let!(:user) { create(:user, :confirmed) }
 
   context 'Success' do
     let!(:params) do

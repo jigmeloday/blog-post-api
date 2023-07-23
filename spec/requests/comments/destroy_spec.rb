@@ -4,7 +4,7 @@ require 'rails_helper'
 
 # rubocop: disable  Metrics/BlockLength
 describe 'Comment' do
-  let!(:user) { create(:user) }
+  let!(:user) { create(:user, :confirmed) }
   let!(:article) { create(:article, user: user) }
   let!(:comment) { create(:comment, commentable: article, user: user) }
 
@@ -21,7 +21,7 @@ describe 'Comment' do
   end
 
   context 'Failure (With Diff User)' do
-    let!(:user1) { create(:user) }
+    let!(:user1) { create(:user, :confirmed) }
     let!(:params) do
       {
         comment: {
