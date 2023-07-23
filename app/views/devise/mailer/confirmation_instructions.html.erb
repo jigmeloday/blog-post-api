@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Centered Box with Box Shadow</title>
+  <style>
+      body {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          margin: 0;
+      }
+      .container{
+          display: flex;
+         align-items: center;
+          flex-direction: column;
+      }
+      .sub-title-container{
+          margin-top: 12px;
+      }
+      .heading{
+          font-size: 18px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: 28px;
+      }
+      .sub-title{
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 24px;
+      }
+      .box {
+          width: 600px;
+          height: 394px;
+          padding: 24px 32px;
+          border-radius: 10px;
+          box-shadow: 0px 2px 4px 0px rgba(138, 193, 212, 0.24);
+      }
+      .logo-container{
+          display: flex;
+          justify-content: center;
+      }
+      .logo{
+          border: 1px solid black;
+          padding: 10px;
+          border-radius: 27px;
+      }
+      .divider{
+          margin-top: 34px;
+      }
+      hr{
+          color: #B0D5E2;
+      }
+      .otp-container {
+          display: flex;
+          align-items: center;
+          margin-top: 24px;
+          margin-bottom: 24px;
+      }
+      .otp-box{
+          display: flex;
+          width: 64px;
+          height: 64px;
+          padding: 10px;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          margin: 0 16px;
+          border-radius: 4px;
+          background: rgba(0, 121, 162, 0.06);
+
+      }
+      .otp{
+          color:  #005673;
+          text-align: center;
+          font-size: 48px;
+          font-style: normal;
+          font-weight: 600;
+          line-height: 100%;
+      }
+  </style>
+</head>
+<body>
+<div class="box">
+  <div class="logo-container">
+    <div class="logo">
+      Logo
+    </div>
+  </div>
+  <div class="divider">
+    <hr color="#B0D5E2"/>
+  </div>
+  <div class="container">
+    <div>
+       <span class="heading">
+         Hello Jigme Lodey
+       </span>
+    </div>
+    <div class="sub-title-container">
+      <span class="sub-title">Your verification code is</span>
+    </div>
+    <div class="otp-container">
+      <% '0182'.chars.each do |char| %>
+        <div class="otp-box">
+          <span class="otp"><%=char %></span>
+        </div>
+      <% end %>
+    </div>
+    <div class="">
+
+    </div>
+  </div>
+</div>
+</body>
+</html>
+
+<!--<p>Welcome <%#= @email %>!</p>-->
+
+<!--<p>You can confirm your account email through the link below:</p>-->
+
+<!--<p><%#= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>-->
