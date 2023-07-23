@@ -4,8 +4,8 @@ require 'rails_helper'
 
 # rubocop: disable  Metrics/BlockLength
 describe 'Unfollow' do
-  let!(:user) { create(:user) }
-  let!(:user1) { create(:user) }
+  let!(:user) { create(:user, :confirmed) }
+  let!(:user1) { create(:user, :confirmed) }
 
   context 'Success' do
     let!(:follow) { create(:follow, followed_user: user1, user: user) }

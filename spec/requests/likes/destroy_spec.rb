@@ -4,7 +4,7 @@ require 'rails_helper'
 
 # rubocop: disable  Metrics/BlockLength
 describe 'Like' do
-  let!(:user) { create(:user) }
+  let!(:user) { create(:user, :confirmed) }
   let!(:article) { create(:article, user: user) }
   let!(:like) { create(:like, likable: article, user: user) }
 

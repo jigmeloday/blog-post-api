@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 describe 'Articles Requests' do
-  let!(:user) { create(:user) }
+  let!(:user) { create(:user, :confirmed) }
   let!(:article) { create(:article, user: user) }
 
   context 'Success' do
