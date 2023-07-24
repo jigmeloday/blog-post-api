@@ -1,6 +1,6 @@
 module HelperMethods
   def token
-    SecureRandom.random_number(0o00000..999_999).to_s.rjust(4, '0')
+    SecureRandom.random_number(0o00000..999_999).to_s.rjust(6, '0')
   end
 
   def user_by_email
