@@ -18,17 +18,6 @@ module Api
             render json: resource, serializer: UserSerializer
           end
         end
-
-        def configure_sign_up_params
-          params.require(:user).permit(
-            :username,
-            :name,
-            :email,
-            :password,
-            :password_confirmation,
-            :gender
-          )
-        end
       end
     end
   end
