@@ -2,12 +2,7 @@ module Api
   module V1
     module Users
       class RegistrationsController < Devise::RegistrationsController
-        include HelperMethods
         before_action :configure_account_create_params, only: :create
-        def create
-          User.create!(configure_sign_up_params.merge(confirmation_token: token, confirmation_sent_at: Time.zone.now))
-          render json: { message: 'Verification code sent to the email' }
-        end
 
         protected
 
