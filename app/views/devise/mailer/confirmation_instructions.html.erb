@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+    rel="stylesheet">
+</head>
+<body>
+<div style="margin: auto;">
+  <h1 style="font-family: 'Open Sans',serif; font-style: normal;font-weight: 700; font-size: 24px;
+    color: #343E56; line-height: 33px; margin-top: 32px; margin-bottom: 0; text-align: center">Verify Your
+    Email</h1>
+<hr width="50%" color="#B0D5E2">
+<div style="font-family: 'Open Sans',serif; font-style: normal; text-align: center; margin-top: 12px;  font-size: 14px;line-height: 24px;">
+  <span style="font-family: 'Open Sans',serif; font-style: normal;color: #75829C; font-weight: 400;">
+    <i>Hello</i>
+  </span>
+  <span style="font-family: 'Open Sans',serif; font-style: normal;color: #75829C; font-weight: 600; line-height: 24px;">
+    <i> Otter <%= @resource.name %></i>
+  </span>
+</div>
+
+  <p style="font-family: 'Open Sans',serif; font-style: normal;
+    color: #75829C; font-weight: 400; font-size: 14px;line-height: 24px; text-align: center">
+    Use the one time passcode provided below to verify your email and complete the registration</p>
+  <table style="margin: auto">
+    <tr>
+      <td>
+        <p style="font-family: 'Open Sans',serif; font-style: normal;background-color: rgba(0, 121, 162, 0.06); padding: 12px 20px; margin-right: 24px;
+          font-weight: 400; font-size: 18px;
+          color: #005673; line-height: 33px;"><%= @token %></p>
+      </td>
+    <tr>
+  </table>
+  <p style="font-family: 'Open Sans',serif; font-style: normal;
+    color: #75829C; font-weight: 400; font-size: 14px;line-height: 24px; text-align: center">
+    <i>Use this code within the next 10 minutes.</i>
+  </p>
+  <hr width="50%" color="#B0D5E2">
+  <div style="font-family: 'Open Sans',serif; font-style: normal;
+  color: #75829C; font-weight: 300; font-size: 12px;line-height: 18px; text-align: center" >
+
+    ©<%= Date.current.year %> All Rights Reserved, otterwhispers@
+  </div>
+</div>
+</body>
+</html>

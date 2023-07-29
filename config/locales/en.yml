@@ -30,4 +30,9 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  pundit: You are not authorized to perform this action.
+  devise:
+    mailer:
+      confirmation_instructions:
+        user_subject: Confirmation Code
+
