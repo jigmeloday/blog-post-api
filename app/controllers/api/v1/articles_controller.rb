@@ -6,7 +6,7 @@ module Api
       skip_before_action :authenticate_user!, only: %i[index show]
 
       def index
-        render json: Article.all, each_serializer: ArticleSerializer
+        render json: Article.all.order(created_at: :desc), each_serializer: ArticleSerializer
       end
 
       def show
