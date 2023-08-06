@@ -30,7 +30,6 @@ module BlogApi
                           expire_after: 7.days,
                           domain: :all,
                           tld_length: 3,
-                          same_site: :none
-    config.action_dispatch.cookies_same_site_protection = :none
+                          same_site: :lax
   end
 end
