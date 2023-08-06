@@ -8,6 +8,7 @@ class ArticleSerializer < ActiveModel::Serializer
     :user_id,
     :liked_by_current_user,
     :owner,
+    :following,
     :created_at
   )
 
@@ -19,5 +20,9 @@ class ArticleSerializer < ActiveModel::Serializer
 
   def owner
     object.user
+  end
+
+  def following
+    current_user ? current_user.follows.find_by(followed_user_id: object.user_id).present? : false
   end
 end
