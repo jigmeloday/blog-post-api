@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
+      get 'articles/popular', to: 'articles#popular', as: 'popular_articles'
       resources :articles
       resources :likes, only: %i[create destroy]
       resources :follows, only: %i[create destroy]
