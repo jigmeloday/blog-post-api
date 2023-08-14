@@ -22,7 +22,9 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
+      get 'users/authenticated', to: 'users#authenticated', as: 'authenticated'
       get 'articles/popular', to: 'articles#popular', as: 'popular_articles'
+      get 'users/profile', to: 'users#profile', as: 'user_profile'
       resources :articles
       resources :likes, only: %i[create destroy]
       resources :follows, only: %i[create destroy]
