@@ -3,10 +3,10 @@
 module Api
   module V1
     class ArticlesController < ApplicationController
-      skip_before_action :authenticate_user!, only: %i[index show]
+      skip_before_action :authenticate_user!, only: %i[index show popular]
 
       def index
-        render json: Article.all, each_serializer: ArticleSerializer
+        render json: Article.all.order!(created_at: :desc), each_serializer: ArticleSerializer
       end
 
       def show
@@ -27,6 +27,10 @@ module Api
       def update
         article = ArticleService.new(current_user, update_params, id).update
         render json: article, serializer: ArticleSerializer
+      end
+
+      def popular
+        render json: Article.order(like_count: :desc).limit(3)
       end
 
       private
